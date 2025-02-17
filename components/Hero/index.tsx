@@ -2,15 +2,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 
 export function Hero() {
-    const [scrollY, setScrollY] = useState(0);
+    const parallaxRef = useRef<HTMLDivElement>(null);
+    const [offset, setOffset] = useState(0);
 
     useEffect(() => {
+        let lastScrollY = 0;
+        let ticking = false;
+
         const handleScroll = () => {
-            setScrollY(window.scrollY);
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    setOffset(lastScrollY * 0.5);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -21,29 +32,30 @@ export function Hero() {
 
         <section className="relative min-h-screen overflow-hidden flex items-center justify-center p-4 md:p-6 lg:p-8">
             <div
+                ref={parallaxRef}
                 className="absolute inset-0"
                 style={{
-                    transform: `translateY(${scrollY * 0.75}px)`,
+                    transform: `translate3d(0, ${offset * 0.75}px, 0)`
                 }}
             >
                 <Image
                     src="/images/hero.avif"
                     alt="Sound board with purple lighting"
                     fill
-                    className="w-full h-[120%] object-cover brightness-60"
+                    className="w-full h-[120%] object-cover brightness-80"
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-black/70 to-black/90" />
             </div>
             <div className="absolute inset-0 flex items-center justify-center"
                 style={{
-                    transform: `translateY(${scrollY * 0.5}px)`,
+                    transform: `translate3d(0, ${offset * 0.75}px, 0)`
                 }}>
                 <Image
                     src="/images/logo.avif"
                     alt="Void Born Audio Logo"
                     width={1000}
                     height={600}
-                    className="relative h-auto w-2/3 max-w-7xl opacity-90 m-auto"
+                    className="relative h-auto w-2/3 max-w-3xl opacity-90 m-auto"
                 />
 
             </div>

@@ -46,7 +46,7 @@ export function Hero() {
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-black/70 to-black/90" />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center"
+            <div className="absolute inset-0 grid gap-8 content-center justify-center"
                 style={{
                     transform: `translate3d(0, ${offset * 0.75}px, 0)`
                 }}>
@@ -57,20 +57,22 @@ export function Hero() {
                     height={600}
                     className="relative h-auto w-2/3 max-w-3xl opacity-90 m-auto"
                 />
+                <h1 className="sr-only">Void Born Audio</h1>
+                <p className="purple-glow text-center text-xl md:text-4xl">Production & Mixing </p>
+
+                <Link
+                    href="#contact"
+                    className="bg-purple-700 mx-auto text-white px-10 py-2 rounded-full hover:bg-transparent cursor-pointer border-purple-700 border-2 transition-colors purple-glow-box"
+                >
+                    Contact Me
+                </Link>
 
             </div>
             <div className="sr-only">
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4">
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 purple-glow">Void Born Audio</h1>
                     <p className="text-xl md:text-2xl mb-8 max-w-2xl text-gray-300">
                         Where Sound Takes Form
                     </p>
-                    <Link
-                        href="#contact"
-                        className="bg-purple-700 text-white px-8 py-3 rounded hover:bg-purple-600 transition-colors purple-glow-box"
-                    >
-                        Get Started <ArrowRight className="inline-block ml-2" />
-                    </Link>
                 </div>
             </div>
         </section>

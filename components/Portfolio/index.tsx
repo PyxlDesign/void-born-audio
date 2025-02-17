@@ -1,5 +1,20 @@
 import Image from "next/image";
 
+{/* 
+    
+    Use Player: https://github.com/bouzidanas/react-list-player
+    Will need song's lists.
+    Sing info:
+    - Title
+    - Artist
+    - Album
+    - Cover
+    - mix/produced (Filter option for mixed and produced)
+    - Duration
+    - Time
+    
+    */}
+
 export const Portfolio = () => {
     return (
         <section id="portfolio" className="relative py-20 px-4 bg-black">

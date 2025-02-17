@@ -1,8 +1,10 @@
-import './globals.css';
+import clsx from 'clsx';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+import './globals.css';
+import { Cormorant_SC } from 'next/font/google';
+
+const cormorant = Cormorant_SC({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: 'Void Born Audio - Professional Music Production Studio',
@@ -15,8 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <html lang="en" className="scroll-smooth">
+      <body className={clsx(cormorant.className)}>{children}</body>
+    </html >
   );
 }

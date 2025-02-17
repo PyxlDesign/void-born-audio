@@ -41,15 +41,15 @@ export default function FAQ() {
         >
           <ArrowLeft className="mr-2" /> Back to Home
         </Link>
-        <h1 className="text-4xl font-bold mb-12 purple-glow">Frequently Asked Questions</h1>
+        <h1 className="text-4xl tracking-wide font-bold mb-12 purple-glow">Frequently Asked Questions</h1>
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div
               key={index}
               className="bg-zinc-900 rounded-lg p-6 hover:bg-zinc-800 transition-colors border border-purple-900/50 hover:border-purple-500/50 purple-glow-box"
             >
-              <h3 className="text-xl font-semibold mb-3 text-purple-400">{faq.question}</h3>
-              <p className="text-gray-300">{faq.answer}</p>
+              <h3 className="text-2xl tracking-wide font-semibold mb-3 text-purple-400">{faq.question}</h3>
+              <p className="font-sans tracking-widest leading-loose text-gray-300">{faq.answer}</p>
             </div>
           ))}
         </div>

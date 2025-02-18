@@ -10,7 +10,7 @@ export const Navbar = () => {
     return (
         <nav className="fixed w-full z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
             <div className="mx-auto px-4">
-                <div className="grid grid-cols-3 items-center justify-between h-16">
+                <div className="flex md:grid grid-cols-3 items-center justify-between h-16">
                     <Link href="/" className="text-xl font-bold flex items-center gap-2">
                         <Image
                             src="/images/logo-words-black.avif" alt="Void Born Audio Logo"
@@ -79,10 +79,10 @@ export const Navbar = () => {
                             </Link>
                             <Link
                                 href="/#contact"
-                                className="bg-purple-700 text-white px-6 py-2 rounded hover:bg-purple-600 transition-colors inline-block text-center purple-glow-box"
+                                className="bg-purple-700 text-white px-6 py-2 rounded-full border-2 border-purple-700 transition-colors inline-block text-center purple-glow-box"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                Get Started
+                                Contact Me
                             </Link>
                         </div>
                     </div>

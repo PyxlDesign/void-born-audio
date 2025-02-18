@@ -53,9 +53,10 @@ export function Hero() {
                 <Image
                     src="/images/logo.avif"
                     alt="Void Born Audio Logo"
-                    width={1000}
-                    height={600}
-                    className="relative h-auto w-2/3 max-w-3xl opacity-90 m-auto"
+                    width={768}
+                    height={506}
+                    loading='eager'
+                    className="relative h-auto w-3xl max-w-2/3 opacity-90 m-auto"
                 />
                 <h1 className="sr-only">Void Born Audio</h1>
                 <p className="purple-glow text-center text-xl md:text-4xl">Production & Mixing </p>

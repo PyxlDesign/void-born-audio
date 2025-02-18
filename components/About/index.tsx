@@ -15,18 +15,19 @@ export const About = () => {
                             className="rounded-lg aspect-square purple-glow-box opacity-80"
                         />
                     </div>
-                    <div>
-                        <h2 className="text-title mb-6 purple-glow">About Me</h2>
-                        <p className="text-gray-300 mb-6 text-body">
-                            Void Born Audio is where innovation meets sound, crafting
-                            exceptional music productions that resonate with audiences. Our state-of-the-art
-                            studio and experienced team combine technical mastery with creative artistry
-                            to bring your musical vision to life.
+                    <div className="grid gap-8">
+                        <h2 className="text-title purple-glow">About Me</h2>
+                        <p className="text-gray-300 text-body">
+                            Hi, I'm Brian Price, a producer from central pennsylvania who specializes in heavy music.</p>
+                        <p className="text-gray-300 text-body">
+                            My mission is to help you achieve the best version of yourself and take your projects to the level you want and deserve!
                         </p>
-
+                        <p className="text-gray-300 text-body">
+                            Let's make some music that makes people want to flip some furniture and head bang till their head hurts ( Chiroprator appointment sold seperately )
+                        </p>
                         <Link
                             href="#contact"
-                            className="bg-purple-700 mx-auto text-xl text-white px-10 py-2 rounded-full hover:bg-transparent cursor-pointer border-purple-700 border-2 transition-colors purple-glow-box"
+                            className="bg-purple-700 mr-auto text-white px-10 py-2 rounded-full hover:bg-transparent cursor-pointer border-purple-700 border-2 transition-colors purple-glow-box"
                         >
                             Contact Me
                         </Link>

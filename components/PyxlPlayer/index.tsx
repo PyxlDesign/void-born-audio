@@ -155,7 +155,7 @@ export function PyxlPlayer() {
 
                 <button
                     onClick={handlePlayPause}
-                    className="bg-purple-500 hover:bg-purple-600 text-white p-4 rounded-full transition transform hover:scale-105 active:scale-95 shadow-lg"
+                    className="bg-purple-600 border-2 border-purple-600 hover:bg-transparent text-white p-4 rounded-full transition transform hover:scale-105 active:scale-95 shadow-lg"
                 >
                     {isPlaying ? <Pause size={24} /> : <Play size={24} />}
                 </button>
@@ -207,10 +207,10 @@ export function PyxlPlayer() {
                             <div
                                 key={index}
                                 onClick={() => handleSongSelect(index)}
-                                className={`flex justify-between items-center p-3 rounded-xl cursor-pointer transition
+                                className={`flex justify-between items-center p-3 border-2 rounded-xl cursor-pointer transition
                     ${currentSongIndex === index
-                                        ? 'bg-purple-500/20 text-white'
-                                        : 'text-gray-300 hover:bg-white/10'
+                                        ? 'bg-purple-500/20 text-white border-purple-600/50'
+                                        : 'text-gray-300 border-transparent hover:border-purple-600'
                                     }`}
                             >
                                 <div className="flex items-center gap-3 w-full mr-8">

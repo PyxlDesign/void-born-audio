@@ -42,6 +42,7 @@ export function Hero() {
                     src="/images/hero.avif"
                     alt="Sound board with purple lighting"
                     fill
+                    loading='eager'
                     className="w-full h-[120%] object-cover brightness-80"
                 />
                 <div className="absolute inset-0 bg-linear-to-b from-black/70 to-black/90" />

@@ -41,7 +41,17 @@ export const Navbar = () => {
                         className="md:hidden text-gray-300 hover:text-purple-400"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                     >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isMenuOpen ? (
+                            <>
+                                <X size={24} />
+                                <span className="sr-only">Close Menu</span>
+                            </>
+                        ) : (
+                            <>
+                                <Menu size={24} />
+                                <span className="sr-only">Open Menu</span>
+                            </>
+                        )}
                     </button>
                 </div>
 

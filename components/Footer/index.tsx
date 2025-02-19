@@ -14,7 +14,7 @@ export function Footer() {
                                 alt="Void Born Audio"
                                 width={174}
                                 height={50}
-                                className="invert m-auto md:ml-0 max-w-full"
+                                className="invert m-auto md:ml-0 max-w-[174px]"
                             />
                             <span className="sr-only">Void Born</span>
                         </h3>

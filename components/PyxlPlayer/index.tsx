@@ -32,27 +32,46 @@ export function PyxlPlayer() {
     const [volume, setVolume] = useState(1);
     const [showPlaylist, setShowPlaylist] = useState(false);
     const [songDurations, setSongDurations] = useState<{ [key: string]: number }>({});
+    const [isAudioLoaded, setIsAudioLoaded] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement>(null);
     const progressBarRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        // Load durations for all songs
-        playlist.forEach(song => {
-            const audio = new Audio(song.url);
-            audio.addEventListener('loadedmetadata', () => {
+    // Load audio when user interacts
+    const loadAudio = () => {
+        if (!isAudioLoaded && audioRef.current) {
+            setIsAudioLoaded(true);
+            audioRef.current.load();
+        }
+    };
+
+    // Load metadata for a specific song
+    const loadSongMetadata = (songUrl: string) => {
+        if (!songDurations[songUrl]) {
+            const audio = new Audio();
+            audio.preload = "metadata";
+            audio.src = songUrl;
+
+            const handleMetadata = () => {
                 setSongDurations(prev => ({
                     ...prev,
-                    [song.url]: audio.duration
+                    [songUrl]: audio.duration
                 }));
-            });
-        });
-    }, []);
+                audio.removeEventListener('loadedmetadata', handleMetadata);
+                audio.remove();
+            };
+
+            audio.addEventListener('loadedmetadata', handleMetadata);
+        }
+    };
 
     useEffect(() => {
         if (audioRef.current) {
             if (isPlaying) {
-                audioRef.current.play();
+                loadAudio();
+                audioRef.current.play().catch(() => {
+                    setIsPlaying(false);
+                });
             } else {
                 audioRef.current.pause();
             }
@@ -67,7 +86,9 @@ export function PyxlPlayer() {
     };
 
     const handlePlayPause = () => {
+        loadAudio();
         setIsPlaying(!isPlaying);
+        loadSongMetadata(playlist[currentSongIndex].url);
     };
 
     const handleTimeUpdate = () => {
@@ -79,6 +100,7 @@ export function PyxlPlayer() {
 
     const handleProgressClick = (event: React.MouseEvent<HTMLDivElement>) => {
         if (progressBarRef.current && audioRef.current) {
+            loadAudio();
             const rect = progressBarRef.current.getBoundingClientRect();
             const pos = (event.clientX - rect.left) / rect.width;
             audioRef.current.currentTime = pos * duration;
@@ -94,16 +116,24 @@ export function PyxlPlayer() {
     };
 
     const handleNext = () => {
-        setCurrentSongIndex((prev) => (prev + 1) % playlist.length);
+        const nextIndex = (currentSongIndex + 1) % playlist.length;
+        loadSongMetadata(playlist[nextIndex].url);
+        setCurrentSongIndex(nextIndex);
+        if (isPlaying) loadAudio();
     };
 
     const handlePrev = () => {
-        setCurrentSongIndex((prev) => (prev - 1 + playlist.length) % playlist.length);
+        const prevIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+        loadSongMetadata(playlist[prevIndex].url);
+        setCurrentSongIndex(prevIndex);
+        if (isPlaying) loadAudio();
     };
 
     const handleSongSelect = (index: number) => {
+        loadSongMetadata(playlist[index].url);
         setCurrentSongIndex(index);
         setIsPlaying(true);
+        loadAudio();
     };
 
     return (
@@ -122,6 +152,7 @@ export function PyxlPlayer() {
             <audio
                 ref={audioRef}
                 src={playlist[currentSongIndex].url}
+                preload="none"
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleTimeUpdate}
                 onEnded={handleNext}

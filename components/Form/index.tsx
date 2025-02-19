@@ -1,11 +1,7 @@
 'use client';
 import { useState } from 'react';
-import Button from '@/components/Elements/Button';
-import Input from '@/components/Elements/Input';
-import Select from '@/components/Elements/Select';
-import Textarea from '@/components/Elements/Textarea';
 
-export default function ContactForm() {
+export function Form() {
     const [form, setForm] = useState({
         access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "",
         subject: "Void Born Audio - Contact Form Submission",
@@ -62,71 +58,34 @@ export default function ContactForm() {
             <input type="checkbox" name="botcheck" className="hidden" checked={honeypot} onChange={(e) => setHoneypot(e.target.checked)} />
 
             <div className="grid gap-2">
-                <Input
-                    handleChange={handleChange} id="name" label="Name" name="name" type="text" required />
-            </div>
-
-            <div className="grid gap-2">
-                <Input
-                    handleChange={handleChange} id="email" label="Email" name="email" type="email" required />
-            </div>
-
-            <div className="grid gap-2">
-                <Select handleChange={handleSelectChange} label="What type of session are you looking for?" name="session_type" options={[
-                    { value: 'placeholder', name: 'Please make a selection' },
-                    { value: 'wedding', name: 'Wedding/Destination/Elopement' },
-                    { value: 'engagement', name: 'Engagement' },
-                    { value: 'family', name: 'Family' },
-                    { value: 'couples', name: 'Casual Couples Session' },
-                    { value: 'senior', name: 'Senior' },
-                    { value: 'other', name: 'Other' }
-                ]} />
-            </div>
-
-            {(form.session_type === "wedding" || form.session_type === "engagement") ? (<div className="grid gap-2">
-                <Textarea
-                    handleChange={handleChange}
-                    label="Tell us about your Love Story!"
-                    name="love_story"
-                    placeholder=""
-                />
-            </div>) : (
-                <div className="grid gap-2">
-                    <Textarea handleChange={handleChange} label="Tell us your story!" name="story" placeholder="" />
-                </div>
-            )}
-
-            <div className="grid gap-2">
-                <Textarea
-                    handleChange={handleChange}
-                    label="What Draws You To Our Work?"
-                    name="attraction"
-                    placeholder=""
+                <label className="sr-only" htmlFor="name">Name *</label>
+                <input
+                    onChange={handleChange} id="name" placeholder="Name *" name="name" type="text" required
+                    className='bg-zinc-800 text-white px-4 py-2 rounded'
                 />
             </div>
 
             <div className="grid gap-2">
-                <Input
-                    handleChange={handleChange}
-                    id="vibe"
-                    label="Tell Us About The Vibe/Aesthetic Of Your Wedding Day"
-                    name="vibe"
-                    type="text"
+                <label className="sr-only" htmlFor="email">Email *</label>
+                <input
+                    onChange={handleChange} id="email" placeholder="Email *" name="email" type="email" required
+                    className='bg-zinc-800 text-white px-4 py-2 rounded'
                 />
             </div>
 
             <div className="grid gap-2">
-                <Textarea
-                    handleChange={handleChange}
-                    label="Anything Else You Would Like Us To Know?"
-                    name="additional_info"
-                    placeholder=""
-                />
+                <label className="sr-only" htmlFor="message">Message</label>
+                <textarea
+                    onChange={handleChange}
+                    name="message"
+                    placeholder="Message"
+                    className='bg-zinc-800 text-white px-4 py-2 rounded'
+                ></textarea>
             </div>
 
-            <Button type="submit" className="self-start">
+            <button type="submit" className="bg-purple-700 text-white px-8 py-3 rounded-full hover:bg-transparent cursor-pointer border-purple-700 border-2 transition-colors purple-glow-box">
                 {result}
-            </Button>
+            </button>
         </form>
     );
 }

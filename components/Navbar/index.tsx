@@ -13,8 +13,8 @@ export const Navbar = () => {
                 <div className="flex md:grid grid-cols-3 items-center justify-between h-16">
                     <Link href="/" className="text-xl font-bold flex items-center gap-2">
                         <Image
-                            src="/images/logo-words-black.avif" alt="Void Born Audio Logo"
-                            width={174} height={50}
+                            src="/images/logo-words-black.avif" loading='eager' alt="Void Born Audio Logo"
+                            width={160} height={46}
                             className="invert"
                         />
                         <span className="sr-only">Void Born Audio</span>

@@ -59,6 +59,7 @@ export function Footer() {
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
                             >
                                 <Facebook size={24} />
+                                <span className="sr-only">Follow me on Facebook</span>
                             </a>
                             <a
                                 href="https://instagram.com"
@@ -67,6 +68,7 @@ export function Footer() {
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
                             >
                                 <Instagram size={24} />
+                                <span className="sr-only">Follow me on Instagram</span>
                             </a>
                             <a
                                 href="https://youtube.com"
@@ -75,6 +77,7 @@ export function Footer() {
                                 className="text-gray-400 hover:text-purple-400 transition-colors"
                             >
                                 <Youtube size={24} />
+                                <span className="sr-only">Follow me on Youtube</span>
                             </a>
                         </div>
                     </div>

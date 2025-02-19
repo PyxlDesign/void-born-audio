@@ -150,6 +150,7 @@ export function PyxlPlayer() {
                     onClick={handlePrev}
                     className="text-white hover:text-purple-400 transition transform hover:scale-110"
                 >
+                    <span className="sr-only">Skip Back</span>
                     <SkipBack size={24} />
                 </button>
 
@@ -157,13 +158,24 @@ export function PyxlPlayer() {
                     onClick={handlePlayPause}
                     className="bg-purple-600 border-2 border-purple-600 hover:bg-transparent text-white p-4 rounded-full transition transform hover:scale-105 active:scale-95 shadow-lg"
                 >
-                    {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+                    {isPlaying ? (
+                        <>
+                            <span className="sr-only">Pause Music</span>
+                            <Pause size={24} />
+                        </>
+                    ) : (
+                        <>
+                            <span className="sr-only">Play Music</span>
+                            <Play size={24} />
+                        </>
+                    )}
                 </button>
 
                 <button
                     onClick={handleNext}
                     className="text-white hover:text-purple-400 transition transform hover:scale-110"
                 >
+                    <span className="sr-only">Skip Forward</span>
                     <SkipForward size={24} />
                 </button>
             </div>
@@ -171,8 +183,10 @@ export function PyxlPlayer() {
             <div className="flex items-center gap-2 mb-4 group">
                 <Volume2 size={20} className="text-gray-400 group-hover:text-purple-400 transition" />
                 <div className="relative w-full h-8 flex items-center">
+                    <label htmlFor="volume" className="sr-only">Music Volume</label>
                     <input
                         type="range"
+                        id="volume"
                         min="0"
                         max="1"
                         step="0.01"

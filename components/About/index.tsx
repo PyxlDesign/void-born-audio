@@ -10,8 +10,8 @@ export const About = () => {
                         <Image
                             src="/images/brian-price.avif"
                             alt="Recording Studio"
-                            height={784}
-                            width={784}
+                            height={550}
+                            width={550}
                             className="rounded-lg aspect-square purple-glow-box opacity-80"
                         />
                     </div>

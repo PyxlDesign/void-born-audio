@@ -23,7 +23,7 @@ export const About = () => {
                             My mission is to help you achieve the best version of yourself and take your projects to the level you want and deserve!
                         </p>
                         <p className="text-gray-300 text-body">
-                            Let's make some music that makes people want to flip some furniture and head bang till their head hurts ( Chiroprator appointment sold seperately )
+                            Let's make some music that makes people want to flip some furniture and head bang till their head hurts (Chiroprator appointment sold seperately)
                         </p>
                         <Link
                             href="#contact"

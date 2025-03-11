@@ -11,6 +11,12 @@ interface Song {
 
 const playlist: Song[] = [
     {
+        title: "Aluminum",
+        artist: "SoundGallery",
+        work: "Producer",
+        url: "./music/aluminum.mp3"
+    },
+    {
         title: "Cinematic Atmosphere",
         artist: "SoundGallery",
         work: "Mixer",
